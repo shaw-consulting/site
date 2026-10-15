@@ -1,0 +1,53 @@
+name: Deploy Shaw Consulting site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Stage website and generate brand artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/assets
+          # This example assumes the website's checked-in files are in site/.
+          # If your existing site has a build step, replace this copy with it.
+          cp -R site/. _site/
+          cp assets/icon.svg assets/text.svg _site/assets/
+          sh scripts/build-logo.sh _site/assets/logo.svg
+          test -s _site/assets/logo.svg
+
+      - name: Upload Pages site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Brand: Initialize Git hooks and generate logo",
+      "detail": "Runs when the project is opened in a trusted VS Code workspace and automatic tasks are approved.",
+      "type": "process",
+      "command": "git",
+      "args": [
+        "-c",
+        "alias.brand-bootstrap=!sh scripts/setup-hooks.sh",
+        "brand-bootstrap"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "runOptions": {
+        "runOn": "folderOpen",
+        "instanceLimit": 1,
+        "instancePolicy": "silent"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Brand: Regenerate logo",
+      "detail": "Regenerate the local logo on demand before committing artwork changes.",
+      "type": "process",
+      "command": "git",
+      "args": [
+        "-c",
+        "alias.brand-build=!sh scripts/build-logo.sh",
+        "brand-build"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "close": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

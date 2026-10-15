@@ -1,0 +1,3 @@
+#!/bin/sh
+# Git sets the working directory to the repository root for normal hooks.
+exec sh scripts/build-logo.sh

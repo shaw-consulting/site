@@ -1,0 +1,5 @@
+# Git for Windows must check out executable shell scripts with Unix line endings.
+*.sh text eol=lf
+.githooks/* text eol=lf
+*.svg text eol=lf
+*.yml text eol=lf
