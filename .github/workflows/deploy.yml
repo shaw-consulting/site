@@ -28,11 +28,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p _site/assets
           # This example assumes the website's checked-in files are in site/.
           # If your existing site has a build step, replace this copy with it.
           cp -R site/. _site/
-          cp assets/icon.svg assets/text.svg _site/assets/
           sh scripts/build-logo.sh _site/assets/logo.svg
           test -s _site/assets/logo.svg
 

@@ -2,10 +2,12 @@
 
 Artwork that you commit:
 
+All artwork lives under `site/assets/`, so direct local previews and the deployed site use the same asset paths.
+
 - `assets/icon.svg` — standalone icon, also suitable for an SVG favicon.
 - `assets/text.svg` — standalone vector wordmark.
 
-Generated (not committed): `assets/logo.svg`.
+Generated (not committed): `site/assets/logo.svg`.
 
 The shell builder places the two SVGs inside a self-contained combined SVG (nested
 `<svg>` elements with explicit placement). It does *not* use an external `<image>`
@@ -22,8 +24,8 @@ transparent and switches automatically under the browser's `color-scheme`.
   New Macs may prompt to install Apple's Command Line Tools when first using Git.
 - **Ubuntu 26.04+:** Git and standard POSIX shell tools.
 
-This script is purpose-built for the committed `assets/icon.svg` and
-`assets/text.svg` formats. It checks their `viewBox` values and fails if the
+This script is purpose-built for the committed `site/assets/icon.svg` and
+`site/assets/text.svg` formats. It checks their `viewBox` values and fails if the
 components' coordinate systems change, rather than guessing a new layout.
 Unlike a full XML parser, the shell script assumes normal SVG opening tags.
 
@@ -52,7 +54,7 @@ VS Code is the expected editor for Shaw Consulting site development. The committ
 with `runOptions.runOn: folderOpen`. Once the developer trusts the workspace and
 approves automatic tasks, the task runs after the project opens and on later
 reopenings. It calls `scripts/setup-hooks.sh`, which enables the committed Git
-hooks if they are not already installed and generates `assets/logo.svg`.
+hooks if they are not already installed and generates `site/assets/logo.svg`.
 
 **First opening of a new clone:**
 
