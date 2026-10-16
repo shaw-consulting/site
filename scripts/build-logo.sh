@@ -4,9 +4,9 @@
 set -eu
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-ICON="$ROOT/assets/icon.svg"
-TEXT="$ROOT/assets/text.svg"
-OUTPUT=${1:-"$ROOT/assets/logo.svg"}
+ICON="$ROOT/site/assets/icon.svg"
+TEXT="$ROOT/site/assets/text.svg"
+OUTPUT=${1:-"$ROOT/site/assets/logo.svg"}
 
 if [ "$#" -gt 1 ]; then
   echo 'Usage: sh scripts/build-logo.sh [output.svg]' >&2

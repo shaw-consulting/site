@@ -3,19 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shaw Consulting</title>
+  <title>Shaw Consulting | Technology Consulting</title>
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
   <style>
     :root { color-scheme: light dark; }
-    body { font-family: system-ui, sans-serif; background: Canvas; color: CanvasText; }
-    main { max-width: 700px; margin: 8vh auto; padding: 2rem; }
-    img { display: block; max-width: 100%; height: auto; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: Canvas; color: CanvasText; margin: 0; }
+    header, main { max-width: 960px; margin-inline: auto; padding-inline: 2rem; }
+    header { display: flex; align-items: center; justify-content: space-between; padding-block: 1.5rem; }
+    .brand { display: inline-flex; align-items: center; }
+    .brand img { width: 180px; height: auto; }
+    nav a { color: inherit; font-weight: 650; text-decoration: none; }
+    nav a:hover, nav a:focus-visible { text-decoration: underline; text-underline-offset: .25rem; }
+    main { max-width: 700px; margin-top: 8vh; padding-bottom: 4rem; }
+    .hero-logo { display: block; max-width: 100%; height: auto; }
+    .eyebrow { color: #555; font-size: .875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 6vw, 3.75rem); line-height: 1.05; margin: .35rem 0 1rem; }
+    p { font-size: 1.125rem; line-height: 1.6; }
+    @media (prefers-color-scheme: dark) { .eyebrow { color: #bdbdbd; } }
   </style>
 </head>
 <body>
+  <header>
+    <a class="brand" href="index.html" aria-label="Shaw Consulting home">
+      <img src="assets/logo.svg" width="180" height="85" alt="Shaw Consulting">
+    </a>
+    <nav aria-label="Primary navigation"><a href="about.html">About</a></nav>
+  </header>
   <main>
-    <img src="assets/logo.svg" width="500" height="235" alt="Shaw Consulting">
-    <p>Technology consulting services.</p>
+    <p class="eyebrow">Technology consulting</p>
+    <h1>Software expertise built on experience.</h1>
+    <p>Shaw Consulting provides thoughtful technology consulting services for organizations ready to move forward with confidence.</p>
   </main>
 </body>
 </html>
